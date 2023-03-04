@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/core'
 import { auth } from '../firebase'
 
 
-
 const HomeScreen = () => {
     const navigation = useNavigation()
   const handleUpload = () => {
@@ -18,6 +17,8 @@ const HomeScreen = () => {
 
   return (
       <View style={styles.container}>
+
+        
         <View style={styles.inner}>
           <Image style={styles.logo} source={require('/Users/anvibajpai/turtleneck/turtleApp/sq_upload.png')} />
           <TouchableOpacity onPress={handleUpload} style={styles.button}>
@@ -28,7 +29,7 @@ const HomeScreen = () => {
         <TextInput 
             placeholder="Enter Company Name Here"
             style={styles.input}
-          />
+        />
 
       </View>
   )
@@ -43,12 +44,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F7FDDB',
     },
-
+    header: {
+      backgroundColor: '#A98467',
+      flexDirection: 'row',
+      marginTop: 0,
+      width: '100%',
+      height: "10%",
+    },
     inner: {
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#ADC178',
-      marginTop: 200,
+      marginTop: 100,
       width: '50%',
       height: '50%',
       borderRadius: 10,
@@ -61,7 +68,7 @@ const styles = StyleSheet.create({
       alighItemms: 'center',
       borderRadius: '30',
     },
-
+  
     button:{
         backgroundColor: '#ADC178',
         width: '60%',
@@ -72,16 +79,31 @@ const styles = StyleSheet.create({
     },
 
     buttonText: {
-        color: 'white',
         fontWeight: '500',
         fontSize: 16,
         color: "#6C584C",
     }, 
+
     logo: {
       resizeMode: "contain",
       width: "40%",
       height: "40%",
       borderRadius: '80',
+    },
+    
+    nav: {
+      marginLeft: 20,
+      marginTop: 13,
+      resizeMode: "contain",
+      width: 40,
+      height: 40,
+    },
+    home: {
+      marginLeft: 20,
+      marginTop: 13,
+      resizeMode: "contain",
+      width: 40,
+      height: 40,
     },
     input: {
       backgroundColor: "#DDE5B6",
