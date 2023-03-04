@@ -48,7 +48,7 @@ const LoginScreen = () => {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={[styles.bigContainer]}>
-      <Image style={styles.logo} source={require("../assets/8.png")}></Image>
+      <Image style={styles.logo} source={require("../assets/logo.png")}></Image>
         <View style={[styles.inputContainer, styles.buttonOutline]}>
         <TextInput
           placeholder="Email"
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         height: 200,
         width: "70%",
+        backgroundColor: "#FDFBF1",
     },
   logoContainer: {
     justifyContent: "center",
@@ -102,12 +103,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "#FDFBF1",
   },
 
   inputContainer: {
     marginTop: 40,
-    padding: 20,
+    padding: 10,
+    paddingBottom: 10,
     width: "80%",
   },
   input: {
@@ -125,7 +127,7 @@ const styles = StyleSheet.create({
     paddingTop: 35,
   },
   button: {
-    backgroundColor: "#87ae73",
+    backgroundColor: "#CCD5AE",
     width: "100%",
     padding: 15,
     borderRadius: 10,
@@ -133,8 +135,8 @@ const styles = StyleSheet.create({
   },
   buttonOutline: {
     backgroundColor: "white",
-    marginTop: 5,
-    borderColor: "#87ae73",
+    marginTop: 7,
+    borderColor: "#CCD5AE",
     borderWidth: 2,
   },
   buttonText: {
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonOutlineText: {
-    color: "#87ae73",
+    color: "#CCD5AE",
     fontWeight: "700",
     fontSize: 16,
   },
