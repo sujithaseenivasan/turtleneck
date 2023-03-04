@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/core";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../firebase";
 
 const LoginScreen = () => {
@@ -28,9 +29,7 @@ const LoginScreen = () => {
   }, []);
 
   const handleSignUp = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
+    createUserWithEmailAndPassword(auth, email, password).then((userCredentials) => {
         const user = userCredentials.user;
         console.log("Registered with: ", user.email);
       })
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         height: 200,
-        width: "50%",
+        width: "70%",
     },
   logoContainer: {
     justifyContent: "center",
