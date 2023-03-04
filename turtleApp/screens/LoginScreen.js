@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/core";
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../firebase";
 
 const LoginScreen = () => {
@@ -38,9 +38,7 @@ const LoginScreen = () => {
   };
 
   const handleLogin = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
+    signInWithEmailAndPassword(auth, email, password).then((userCredentials) => {
         const user = userCredentials.user;
         console.log("Logged in with: ", user.email);
       })
