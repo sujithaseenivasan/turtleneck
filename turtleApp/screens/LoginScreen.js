@@ -50,7 +50,7 @@ const LoginScreen = () => {
       <View style={[styles.bigContainer]}>
       <Image style={styles.logo} source={require("../assets/logo.png")}></Image>
         <View style={[styles.inputContainer, styles.buttonOutline]}>
-        <TextInput
+        <TextInput 
           placeholder="Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
     marginTop: 5,
+    fontFamily: "Futura",
   },
   buttonContainer: {
     width: "60%",
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "700",
     fontSize: 16,
+    fontFamily: "Futura",
   },
   buttonOutlineText: {
     color: "#CCD5AE",
