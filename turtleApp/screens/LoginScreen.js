@@ -1,154 +1,130 @@
-import {
-  KeyboardAvoidingView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/core";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from "../firebase";
+import { KeyboardAvoidingView, StyleSheet, Text, Image, TextInput, TouchableOpacity, View } from 'react-native'
+import React from 'react'
+import { useNavigation } from '@react-navigation/core'
+import { auth } from '../firebase'
 
-const LoginScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const navigation = useNavigation();
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.replace("Home");
-      }
-    });
-
-    return unsubscribe;
-  }, []);
-
-  const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password).then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Registered with: ", user.email);
-      })
-      .catch((error) => alert(error.message));
-    console.log("Registered with: ");
-  };
-
-  const handleLogin = () => {
-    signInWithEmailAndPassword(auth, email, password).then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log("Logged in with: ", user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
+const HomeScreen = () => {
+    const navigation = useNavigation()
+  const handleUpload = () => {
+    auth
+    .upload()
+    .then(() => {
+        navigation.replace("Company")
+    })
+    .catch(error => alert(error.message))
+}
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
-      <View style={[styles.bigContainer]}>
-      <Image style={styles.logo} source={require("../assets/logo.png")}></Image>
-        <View style={[styles.inputContainer, styles.buttonOutline]}>
-        <TextInput 
-          placeholder="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          style={styles.input}
-          secureTextEntry
-        />
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View styles={styles.navCont}>
+            <Image style={styles.nav} source={require('/Users/anvibajpai/turtleneck/turtleApp/ham_white.png')} />
+          </View>
+          <View styles={styles.homeCont}><
+            Image style={styles.home} source={require('/Users/anvibajpai/turtleneck/turtleApp/home.png')} />
+          </View>
+
+          
         </View>
-      </View>
+        <View style={styles.inner}>
+          <Image style={styles.logo} source={require('/Users/anvibajpai/turtleneck/turtleApp/sq_upload.png')} />
+          <TouchableOpacity onPress={handleUpload} style={styles.button}>
+            <Text style={styles.buttonText}>Upload Image</Text>
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleSignUp}
-          style={[styles.button, styles.buttonOutline]}
-        >
-          <Text style={styles.buttonOutlineText}>Register</Text>
-        </TouchableOpacity>
-      </View>
-    </KeyboardAvoidingView>
-  );
-};
+        <TextInput 
+            placeholder="Enter Company Name Here"
+            style={styles.input}
+          />
 
-export default LoginScreen;
+      </View>
+  )
+}
+
+export default HomeScreen
 
 const styles = StyleSheet.create({
-    bigContainer: {
-        justifyContent: "center",
-        alignItems: "center",
-        height: 200,
-        width: "70%",
-        backgroundColor: "#FDFBF1",
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F7FDDB',
     },
-  logoContainer: {
-    justifyContent: "center",
-  },
-  logo: {
-    resizeMode: "contain",
-    width: "100%",
-    height: "100%",
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FDFBF1",
-  },
+    header: {
+      backgroundColor: '#A98467',
+      flexDirection: 'row',
+      marginTop: 0,
+      width: '100%',
+      height: "10%",
+    },
+    inner: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#ADC178',
+      marginTop: 100,
+      width: '50%',
+      height: '50%',
+      borderRadius: 10,
+      borderColor: "#6C584C",
+      borderWidth: 3,
+    },
 
-  inputContainer: {
-    marginTop: 40,
-    padding: 10,
-    paddingBottom: 10,
-    width: "80%",
-  },
-  input: {
-    backgroundColor: "white",
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderRadius: 10,
-    marginTop: 5,
-    fontFamily: "Futura",
-  },
-  buttonContainer: {
-    width: "60%",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 40,
-    paddingTop: 35,
-  },
-  button: {
-    backgroundColor: "#CCD5AE",
-    width: "100%",
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  buttonOutline: {
-    backgroundColor: "white",
-    marginTop: 7,
-    borderColor: "#CCD5AE",
-    borderWidth: 2,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "700",
-    fontSize: 16,
-    fontFamily: "Futura",
-  },
-  buttonOutlineText: {
-    color: "#CCD5AE",
-    fontWeight: "700",
-    fontSize: 16,
-  },
-});
+    uploadContainer:{
+      justifyContent: 'center',
+      alighItemms: 'center',
+      borderRadius: '30',
+    },
+
+    button:{
+        backgroundColor: '#ADC178',
+        width: '60%',
+        padding: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+
+    buttonText: {
+        color: 'white',
+        fontWeight: '500',
+        fontSize: 16,
+        color: "#6C584C",
+    }, 
+    logo: {
+      resizeMode: "contain",
+      width: "40%",
+      height: "40%",
+      borderRadius: '80',
+    },
+    
+    nav: {
+      marginLeft: 20,
+      marginTop: 13,
+      resizeMode: "contain",
+      width: 40,
+      height: 40,
+    },
+    home: {
+      marginLeft: 20,
+      marginTop: 13,
+      resizeMode: "contain",
+      width: 40,
+      height: 40,
+    },
+    input: {
+      backgroundColor: "#DDE5B6",
+      borderColor: "#6C584C",
+      borderWidth: 3,
+      paddingHorizontal: 15,
+      paddingVertical: 10,
+      borderRadius: 30,
+      marginTop: 60,
+      marginBottom: 60,
+      width: "50%",
+      height: "50%",
+    },
+
+})
