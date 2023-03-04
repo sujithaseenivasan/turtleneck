@@ -47,7 +47,8 @@ const LoginScreen = () => {
         behavior="padding"
     >
         <View style={styles.logoContainer}>
-        <Image source={require('./8.png')} />
+            <Image style={styles.logo}
+                source={require('./logo_icon.png')} />
         </View>
     <View style={[styles.inputContainer, styles.buttonOutline]}>
         <TextInput
@@ -86,6 +87,15 @@ const LoginScreen = () => {
 export default LoginScreen
 
 const styles = StyleSheet.create({
+    logoContainer: {
+        justifyContent: 'center',
+        height: 200,
+    },
+    logo: {
+        resizeMode: 'contain',
+        width: '100%',
+        height: '100%',
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
