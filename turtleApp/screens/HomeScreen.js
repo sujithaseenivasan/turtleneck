@@ -5,19 +5,19 @@ import { auth } from '../firebase'
 
 
 const HomeScreen = () => {
-    const navigation = useNavigation()
-  const handleUpload = () => {
+  const navigation = useNavigation()
+  const handleSignOut = () => {
     auth
-    .upload()
+    .signOut()
     .then(() => {
-        navigation.replace("Company")
+        navigation.replace("Login")
     })
     .catch(error => alert(error.message))
-}
+  }
+
 
   return (
       <View style={styles.container}>
-
           <View style={styles.header}>
             <View styles={styles.navCont}>
                 <Image style={styles.nav} source={require('/Users/anvibajpai/turtleneck/turtleApp/ham_white.png')} />
@@ -26,7 +26,7 @@ const HomeScreen = () => {
               <Image style={styles.home} source={require('/Users/anvibajpai/turtleneck/turtleApp/home.png')} />
             </View>
             <View styles={styles.logCont}>
-              <TouchableOpacity onPress={handleUpload} style={styles.logout}>
+              <TouchableOpacity onPress={handleSignOut} style={styles.logout}>
                 <Text style={styles.logText}>Logout</Text>
               </TouchableOpacity>
             </View> 
@@ -35,7 +35,7 @@ const HomeScreen = () => {
         
         <View style={styles.inner}>
           <Image style={styles.logo} source={require('/Users/anvibajpai/turtleneck/turtleApp/sq_upload.png')} />
-          <TouchableOpacity onPress={handleUpload} style={styles.button}>
+          <TouchableOpacity onPress={handleSignOut} style={styles.button}>
             <Text style={styles.buttonText}>Upload Image</Text>
           </TouchableOpacity>
         </View>
@@ -44,7 +44,6 @@ const HomeScreen = () => {
             placeholder="Enter Company Name Here"
             style={styles.input}
         />
-
       </View>
   )
 }
