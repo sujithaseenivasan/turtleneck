@@ -25,7 +25,11 @@ const HomeScreen = () => {
             <View styles={styles.homeCont}>
               <Image style={styles.home} source={require('/Users/anvibajpai/turtleneck/turtleApp/home.png')} />
             </View>
-
+            <View styles={styles.logCont}>
+              <TouchableOpacity onPress={handleUpload} style={styles.logout}>
+                <Text style={styles.logText}>Logout</Text>
+              </TouchableOpacity>
+            </View> 
           
         </View>
         
@@ -79,6 +83,20 @@ const styles = StyleSheet.create({
       borderRadius: '30',
     },
   
+    logout: {
+      marginLeft: 1220,
+      marginTop: 15,
+      resizeMode: "contain",
+      width: 80,
+      height: 40,
+    },
+
+    logText: {
+      color: 'white',
+      fontWeight: '200',
+      fontSize: 20,
+    },
+
     button:{
         backgroundColor: '#ADC178',
         width: '60%',
