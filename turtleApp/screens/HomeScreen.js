@@ -18,6 +18,16 @@ const HomeScreen = () => {
   return (
       <View style={styles.container}>
 
+          <View style={styles.header}>
+            <View styles={styles.navCont}>
+                <Image style={styles.nav} source={require('/Users/anvibajpai/turtleneck/turtleApp/ham_white.png')} />
+            </View>
+            <View styles={styles.homeCont}>
+              <Image style={styles.home} source={require('/Users/anvibajpai/turtleneck/turtleApp/home.png')} />
+            </View>
+
+          
+        </View>
         
         <View style={styles.inner}>
           <Image style={styles.logo} source={require('/Users/anvibajpai/turtleneck/turtleApp/sq_upload.png')} />
@@ -99,7 +109,7 @@ const styles = StyleSheet.create({
       height: 40,
     },
     home: {
-      marginLeft: 20,
+      marginLeft: 18,
       marginTop: 13,
       resizeMode: "contain",
       width: 40,
